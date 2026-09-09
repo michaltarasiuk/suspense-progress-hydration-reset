@@ -23,8 +23,6 @@ pnpm install
 pnpm dev
 ```
 
-Open the dev URL printed in the terminal (often [http://localhost:3000](http://localhost:3000) or `:3001`).
-
 ## Routes
 
 | Route                  | Pattern                                      | Expected                            |
@@ -48,12 +46,6 @@ The reset only shows on a **full page load** of `/client-promise`, not when clic
    - **View page source** on `/client-promise`: "Loading" should appear in the HTML before JS runs.
    - **Elements panel:** the progress indicator node may unmount and remount at hydration.
    - **React DevTools:** confirm fallback unmount/remount at hydration.
-
-### Common false negatives
-
-- **Client navigation** from `/` to `/client-promise`: no SSR animation to compare, so no visible reset.
-- **No CPU throttling:** on a fast machine hydration happens quickly and the jump is easy to miss.
-- **`prefers-reduced-motion`:** OS setting may disable the CSS animation entirely.
 
 ## Stack
 
