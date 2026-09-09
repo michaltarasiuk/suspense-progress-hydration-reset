@@ -1,7 +1,26 @@
-import { DemoList } from "./demo-list";
-import { DetailsAccordion } from "./details-accordion";
-import { HomeSection } from "./home-section";
+import Link from "next/link";
 import s from "./page.module.css";
+
+const DEMOS = [
+  {
+    href: "/repro",
+    label: "Variant A",
+    title: "browser() + client promise",
+    description: "Progress animation resets at hydration.",
+  },
+  {
+    href: "/control",
+    label: "Variant B",
+    title: "Server promise prop",
+    description: "Server promise, no reset.",
+  },
+  {
+    href: "/persistent",
+    label: "Variant C",
+    title: "Persistent fallback",
+    description: "Persistent fallback, no reset.",
+  },
+] as const;
 
 export default function HomePage() {
   return (
@@ -14,13 +33,24 @@ export default function HomePage() {
         watch the Progress animation through hydration.
       </p>
 
-      <HomeSection id="demos-heading" title="Demos">
-        <DemoList />
-      </HomeSection>
-
-      <HomeSection id="details-heading" title="Details">
-        <DetailsAccordion />
-      </HomeSection>
+      <section className={s.section} aria-labelledby="demos-heading">
+        <h2 className={s.sectionTitle} id="demos-heading">
+          Demos
+        </h2>
+        <ul className={s.list}>
+          {DEMOS.map((demo) => (
+            <li className={s.item} key={demo.href}>
+              <div className={s.itemInner}>
+                <span className={s.meta}>{demo.label}</span>
+                <Link href={demo.href} className={s.link}>
+                  <span className={s.demoTitle}>{demo.title}</span>
+                </Link>
+                <p className={s.description}>{demo.description}</p>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 }
