@@ -5,22 +5,15 @@ import s from "./site-header.module.css";
 interface SiteHeaderProps {
   title: string;
   subtitle?: string;
-  backHref?: string;
-  backLabel?: string;
 }
 
-export function SiteHeader({
-  title,
-  subtitle,
-  backHref = "/",
-  backLabel = "All demos",
-}: SiteHeaderProps) {
+export function SiteHeader({ title, subtitle }: SiteHeaderProps) {
   return (
     <header className={s.root}>
       <div className={s.inner}>
         <div className={s.topRow}>
-          <Link href={backHref} className={s.back}>
-            {backLabel}
+          <Link href="/" className={s.back}>
+            All demos
           </Link>
           <Separator className={s.sepV} orientation="vertical" />
           <h1 className={s.title}>{title}</h1>

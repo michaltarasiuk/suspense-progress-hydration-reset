@@ -3,21 +3,19 @@
 import { Meter } from "@base-ui/react/meter";
 import { Panel } from "@/components/panel";
 import s from "./loaded-meter.module.css";
+import layout from "./meter-layout.module.css";
 
-interface LoadedMeterProps {
-  result: string;
-}
-
-export function LoadedMeter({ result }: LoadedMeterProps) {
+export function LoadedMeter() {
   return (
-    <Panel footer={`Result: ${result}`}>
-      <Meter.Root className={s.root} value={100}>
-        <Meter.Label className={s.label}>Loaded</Meter.Label>
-        <Meter.Value className={s.value} />
-        <Meter.Track className={s.track}>
-          <Meter.Indicator className={s.indicator} />
+    <Panel>
+      <Meter.Root className={layout.root} value={100}>
+        <Meter.Label className={layout.label}>Loaded</Meter.Label>
+        <Meter.Value className={layout.value} />
+        <Meter.Track className={layout.track}>
+          <Meter.Indicator className={layout.indicator} />
         </Meter.Track>
       </Meter.Root>
+      <p className={s.footer}>Result: done</p>
     </Panel>
   );
 }

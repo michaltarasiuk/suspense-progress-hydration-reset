@@ -9,7 +9,6 @@
 
   --bg-0: oklch(97% 0 0deg);
   --bg-1: white;
-  --bg-2: oklch(97% 0 0deg);
   --fg-0: oklch(14.5% 0 0deg);
   --fg-1: oklch(43.9% 0 0deg);
   --fg-2: oklch(55.6% 0 0deg);
@@ -24,7 +23,6 @@
   :root {
     --bg-0: oklch(14.5% 0 0deg);
     --bg-1: oklch(20% 0 0deg);
-    --bg-2: oklch(26.9% 0 0deg);
     --fg-0: white;
     --fg-1: oklch(70.8% 0 0deg);
     --fg-2: oklch(70.8% 0 0deg);

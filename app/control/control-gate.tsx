@@ -8,6 +8,6 @@ interface ControlGateProps {
 }
 
 export function ControlGate({ dataPromise }: ControlGateProps) {
-  const result = use(dataPromise);
-  return <LoadedMeter result={result} />;
+  use(dataPromise);
+  return <LoadedMeter />;
 }

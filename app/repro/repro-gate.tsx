@@ -3,10 +3,13 @@
 import { use } from "react";
 import { browser } from "react-dom";
 import { LoadedMeter } from "@/components/loaded-meter";
-import { createClientDemoPromise } from "@/lib/demo-async-source";
+
+const dataPromise = new Promise<string>((resolve) => {
+  setTimeout(() => resolve("done"), 3000);
+});
 
 export function ReproGate() {
   use(browser());
-  const result = use(createClientDemoPromise("repro"));
-  return <LoadedMeter result={result} />;
+  use(dataPromise);
+  return <LoadedMeter />;
 }
