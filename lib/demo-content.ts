@@ -1,7 +1,7 @@
 export const CLIENT_PROMISE_CONTENT = {
   slug: "client-promise",
   title: "browser() + client promise",
-  subtitle: "use(browser()) + client-created promise",
+  subtitle: "use(browser()) + window.setTimeout promise",
   description: "Progress animation resets at hydration.",
 };
 
