@@ -1,0 +1,14 @@
+.root {
+  box-sizing: border-box;
+  width: min(100%, 18rem);
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+  background-color: var(--bg-1);
+}
+
+.footer {
+  margin: 0.75rem 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--fg-1);
+}
