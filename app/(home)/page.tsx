@@ -1,24 +1,8 @@
 import Link from "next/link";
 
-import s from "./page.module.css";
+import { DEMO_CONTENT } from "@/lib/demo-content";
 
-const DEMOS = [
-  {
-    slug: "client-promise",
-    title: "browser() + client promise",
-    description: "Progress animation resets at hydration.",
-  },
-  {
-    slug: "server-promise",
-    title: "Server promise prop",
-    description: "Server promise, no reset.",
-  },
-  {
-    slug: "persistent-fallback",
-    title: "Persistent fallback",
-    description: "Persistent fallback, no reset.",
-  },
-] as const;
+import s from "./page.module.css";
 
 export default function Page() {
   return (
@@ -36,7 +20,7 @@ export default function Page() {
           Demos
         </h2>
         <ul className={s.list}>
-          {DEMOS.map((demo) => (
+          {DEMO_CONTENT.map((demo) => (
             <li className={s.item} key={demo.slug}>
               <div className={s.itemInner}>
                 <Link href={`/${demo.slug}`} className={s.link}>

@@ -2,6 +2,7 @@ import { Suspense } from "react";
 
 import { Loading } from "@/components/loading";
 import { SiteHeader } from "@/components/site-header";
+import { PERSISTENT_FALLBACK_CONTENT } from "@/lib/demo-content";
 import { PersistentFallback } from "./PersistentFallback";
 
 import s from "@/app/demo-page.module.css";
@@ -16,7 +17,7 @@ export default function Page() {
   return (
     <div className={s.root}>
       <SiteHeader
-        title="Persistent fallback"
+        title={PERSISTENT_FALLBACK_CONTENT.title}
         subtitle="Fallback outside Suspense, fallback={null}"
       />
       <div className={s.contentColumn}>

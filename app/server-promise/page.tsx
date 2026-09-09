@@ -2,6 +2,7 @@ import { Suspense } from "react";
 
 import { Loading } from "@/components/loading";
 import { SiteHeader } from "@/components/site-header";
+import { SERVER_PROMISE_CONTENT } from "@/lib/demo-content";
 import { ServerPromise } from "./ServerPromise";
 
 import s from "@/app/demo-page.module.css";
@@ -16,7 +17,7 @@ export default function Page() {
   return (
     <div className={s.root}>
       <SiteHeader
-        title="Server promise prop"
+        title={SERVER_PROMISE_CONTENT.title}
         subtitle="Server promise prop, no use(browser())"
       />
       <div className={s.content}>
