@@ -1,23 +1,26 @@
-import { DemoShell } from "@/components/demo-shell";
-import { DemoSuspense } from "@/components/demo-suspense";
-import { createGateDataPromise } from "@/lib/demo-async-source";
-import { DEMOS } from "@/lib/demo-registry";
-import { SuspenseGate } from "@/lib/suspense-gate";
+import { Suspense } from "react";
+import { LoadingFallback } from "@/components/loading-fallback";
+import { SiteHeader } from "@/components/site-header";
+import { createServerDemoPromise } from "@/lib/demo-async-source";
+import s from "@/app/demo-page.module.css";
+import { ControlGate } from "./control-gate";
 
 export const dynamic = "force-dynamic";
 
-export default function ControlPage() {
-  const demo = DEMOS.control;
+const dataPromise = createServerDemoPromise("control");
 
+export default function ControlPage() {
   return (
-    <DemoShell id={demo.id}>
-      <DemoSuspense placement={demo.fallbackPlacement}>
-        <SuspenseGate
-          strategy={demo.strategy}
-          demoId={demo.id}
-          dataPromise={createGateDataPromise(demo.id, demo.strategy)}
-        />
-      </DemoSuspense>
-    </DemoShell>
+    <div className={s.root}>
+      <SiteHeader
+        title="Variant B"
+        subtitle="Server promise prop, no use(browser())"
+      />
+      <div className={s.content}>
+        <Suspense fallback={<LoadingFallback />}>
+          <ControlGate dataPromise={dataPromise} />
+        </Suspense>
+      </div>
+    </div>
   );
 }

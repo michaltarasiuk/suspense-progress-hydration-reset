@@ -1,5 +1,3 @@
-import type { DemoId, SuspenseStrategy } from "@/lib/demo-registry";
-
 export const DEMO_LOAD_DELAY_MS = 3000;
 
 const clientPromises = new Map<string, Promise<string>>();
@@ -29,13 +27,4 @@ export function createClientDemoPromise(
   const promise = createDelayedPromise(delayMs);
   clientPromises.set(key, promise);
   return promise;
-}
-
-export function createGateDataPromise(
-  demoId: DemoId,
-  strategy: SuspenseStrategy
-) {
-  if (strategy === "serverPromiseProp") {
-    return createServerDemoPromise(demoId);
-  }
 }

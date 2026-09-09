@@ -12,7 +12,12 @@
   padding: 1.5rem;
 }
 
-.content[data-layout="column"] {
+.contentColumn {
+  display: flex;
+  flex: 1;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   gap: 1.5rem;
+  padding: 1.5rem;
 }

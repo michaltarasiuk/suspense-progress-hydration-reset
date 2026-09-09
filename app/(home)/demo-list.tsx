@@ -6,7 +6,7 @@ export function DemoList() {
   return (
     <ul className={s.list}>
       {DEMO_LIST.map((demo) => (
-        <li className={s.item} key={demo.id}>
+        <li className={s.item} key={demo.href}>
           <div className={s.itemInner}>
             <span className={s.meta}>{demo.label}</span>
             <Link href={demo.href} className={s.link}>
