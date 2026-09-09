@@ -4,7 +4,7 @@ import s from "@/app/demo-page.module.css";
 import { Loading } from "@/components/loading";
 import { SiteHeader } from "@/components/site-header";
 
-import { PersistentPromise } from "./PersistentFallback";
+import { PersistentFallback } from "./PersistentFallback";
 
 export const dynamic = "force-dynamic";
 
@@ -22,7 +22,7 @@ export default function Page() {
       <div className={s.contentColumn}>
         <Loading />
         <Suspense fallback={null}>
-          <PersistentPromise promise={promise} />
+          <PersistentFallback promise={promise} />
         </Suspense>
       </div>
     </div>
