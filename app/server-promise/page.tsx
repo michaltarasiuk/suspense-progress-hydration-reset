@@ -9,11 +9,15 @@ import s from "@/app/demo-page.module.css";
 
 export const dynamic = "force-dynamic";
 
-const promise = new Promise((resolve) => {
-  setTimeout(() => resolve(1), 3000);
-});
+function createServerPromise() {
+  return new Promise<unknown>((resolve) => {
+    setTimeout(() => resolve(1), 3000);
+  });
+}
 
 export default function Page() {
+  const promise = createServerPromise();
+
   return (
     <div className={s.root}>
       <SiteHeader

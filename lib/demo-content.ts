@@ -9,18 +9,10 @@ export const SERVER_PROMISE_CONTENT = {
   slug: "server-promise",
   title: "Server promise prop",
   subtitle: "Server promise, no reset.",
-  description: "Server promise, no reset.",
-};
-
-export const PERSISTENT_FALLBACK_CONTENT = {
-  slug: "persistent-fallback",
-  title: "Persistent fallback",
-  subtitle: "Persistent fallback, no reset.",
-  description: "Persistent fallback, no reset.",
+  description: "Server-created promise passed as prop. Animation stays smooth.",
 };
 
 export const DEMO_CONTENT = [
   CLIENT_PROMISE_CONTENT,
   SERVER_PROMISE_CONTENT,
-  PERSISTENT_FALLBACK_CONTENT,
 ] as const;

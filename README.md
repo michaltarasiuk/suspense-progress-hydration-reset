@@ -30,9 +30,8 @@ Open the dev URL printed in the terminal (often [http://localhost:3000](http://l
 | Route                  | Pattern                                      | Expected                            |
 | ---------------------- | -------------------------------------------- | ----------------------------------- |
 | `/`                    | Home navigation                              | Links to all demos                  |
-| `/client-promise`      | `use(browser())` + client Map promise        | Animation **restarts** at hydration |
-| `/server-promise`      | Server promise as prop, no `use(browser())`  | Smoother / no client-only restart   |
-| `/persistent-fallback` | Progress outside Suspense, `fallback={null}` | Animation should **not** reset      |
+| `/client-promise` | `use(browser())` + client `window.setTimeout` promise | Animation **restarts** at hydration |
+| `/server-promise` | Server promise as prop, no `use(browser())`             | Smoother / no client-only restart   |
 
 ## How to verify
 
@@ -44,7 +43,7 @@ The reset only shows on a **full page load** of `/client-promise`, not when clic
    - **Performance:** set CPU to **4x slowdown** (makes the hydration jump easier to see)
 3. Hard refresh (Cmd+Shift+R on Mac, Ctrl+Shift+R on Windows/Linux).
 4. Watch the indeterminate Progress bar from first paint. Around 1-2s in (when JS hydrates), the bar should **jump back** to the start of its slide animation.
-5. Hard refresh `/server-promise` and `/persistent-fallback` the same way for comparison. Server promise should stay smooth; persistent fallback should not reset either.
+5. Hard refresh `/server-promise` the same way for comparison. Server promise should stay smooth with no hydration reset.
 6. Optional checks:
    - **View page source** on `/client-promise`: "Loading" should appear in the HTML before JS runs.
    - **Elements panel:** the progress indicator node may unmount and remount at hydration.
