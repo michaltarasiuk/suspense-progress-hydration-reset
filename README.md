@@ -23,7 +23,7 @@ pnpm install
 pnpm dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) for navigation, then hard refresh a demo route.
+Open the dev URL printed in the terminal (often [http://localhost:3000](http://localhost:3000) or `:3001`).
 
 ## Routes
 
@@ -36,11 +36,25 @@ Open [http://localhost:3000](http://localhost:3000) for navigation, then hard re
 
 ## How to verify
 
-1. Hard refresh `/repro`.
-2. Watch the Progress bar from first paint through hydration (~1-2s in).
-3. **Bug:** animation visibly restarts when JS hydrates, then keeps animating until the 3s timeout.
-4. Compare `/control` and `/persistent`.
-5. Optional: React DevTools - confirm fallback unmount/remount or new DOM node at hydration.
+The reset only shows on a **full page load** of `/repro`, not when clicking through from `/`.
+
+1. Open `/repro` directly in the address bar.
+2. Open DevTools:
+   - **Network:** enable "Disable cache"
+   - **Performance:** set CPU to **4x slowdown** (makes the hydration jump easier to see)
+3. Hard refresh (Cmd+Shift+R on Mac, Ctrl+Shift+R on Windows/Linux).
+4. Watch the indeterminate Progress bar from first paint. Around 1-2s in (when JS hydrates), the bar should **jump back** to the start of its slide animation.
+5. Hard refresh `/control` and `/persistent` the same way for comparison. B should stay smooth; C should not reset either.
+6. Optional checks:
+   - **View page source** on `/repro`: "Loading" should appear in the HTML before JS runs.
+   - **Elements panel:** the progress indicator node may unmount and remount at hydration.
+   - **React DevTools:** confirm fallback unmount/remount at hydration.
+
+### Common false negatives
+
+- **Client navigation** from `/` to Variant A: no SSR animation to compare, so no visible reset.
+- **No CPU throttling:** on a fast machine hydration happens quickly and the jump is easy to miss.
+- **`prefers-reduced-motion`:** OS setting may disable the CSS animation entirely.
 
 ## Stack
 

@@ -8,8 +8,10 @@ export const ACCORDION_ITEMS = [
     title: "How to verify",
     kind: "steps",
     items: [
-      "Hard refresh Variant A and watch the Progress bar.",
-      "Compare with Variants B and C.",
+      "Open /repro directly (not via client navigation from /).",
+      "DevTools: Network > Disable cache; Performance > CPU 4x slowdown.",
+      "Hard refresh and watch the Progress bar for a jump ~1-2s in (hydration).",
+      "Compare with /control and /persistent using the same hard refresh method.",
     ],
   },
 ] as const;
