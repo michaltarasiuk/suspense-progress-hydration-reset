@@ -15,7 +15,6 @@ export interface DemoEntry {
   pageTitle: string;
   subtitle: string;
   description: string;
-  expected: string;
   strategy: SuspenseStrategy;
   fallbackPlacement: FallbackPlacement;
   layout: DemoLayout;
@@ -28,9 +27,8 @@ export const DEMOS: Record<DemoId, DemoEntry> = {
     label: "Variant A",
     title: "browser() + client promise",
     pageTitle: "Variant A",
-    subtitle: "use(browser()) plus client-created promise",
-    description: "Primary repro. Animation should restart at hydration.",
-    expected: "Progress animation resets at hydration.",
+    subtitle: "use(browser()) + client-created promise",
+    description: "Progress animation resets at hydration.",
     strategy: "browserClientPromise",
     fallbackPlacement: "inside-suspense",
     layout: "center",
@@ -42,8 +40,7 @@ export const DEMOS: Record<DemoId, DemoEntry> = {
     title: "Server promise prop",
     pageTitle: "Variant B",
     subtitle: "Server promise prop, no use(browser())",
-    description: "Control. No use(browser()). Smoother loading behavior.",
-    expected: "No client-only suspend restart.",
+    description: "Server promise — no reset.",
     strategy: "serverPromiseProp",
     fallbackPlacement: "inside-suspense",
     layout: "center",
@@ -54,9 +51,8 @@ export const DEMOS: Record<DemoId, DemoEntry> = {
     label: "Variant C",
     title: "Persistent fallback",
     pageTitle: "Variant C",
-    subtitle: "Progress outside Suspense with fallback={null}",
-    description: "Progress outside Suspense with fallback={null}.",
-    expected: "Same indicator, no animation reset.",
+    subtitle: "Fallback outside Suspense, fallback={null}",
+    description: "Persistent fallback — no reset.",
     strategy: "clientPromiseOnly",
     fallbackPlacement: "outside-suspense",
     layout: "column",

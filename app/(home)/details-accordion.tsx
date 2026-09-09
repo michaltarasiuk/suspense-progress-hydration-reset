@@ -22,13 +22,6 @@ function AccordionPanel({ item }: AccordionPanelProps) {
           ))}
         </ol>
       );
-    case "variants":
-      return item.items.map((variant) => (
-        <p key={variant.label}>
-          <strong>{variant.label}:</strong> {variant.description}{" "}
-          <em>({variant.expected})</em>
-        </p>
-      ));
     default:
       return assertNever(item);
   }

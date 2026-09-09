@@ -6,18 +6,15 @@ import s from "./page.module.css";
 export default function HomePage() {
   return (
     <main className={s.main}>
-      <h1 className={s.title}>Suspense fallback spinner reset on hydration</h1>
+      <h1 className={s.title}>
+        Suspense fallback Progress animation reset on hydration
+      </h1>
       <p className={s.lead}>
-        Minimal repro for reporting upstream. Each demo uses Base UI Progress
-        for loading and Meter for the loaded state. Hard refresh a route and
-        watch the animation from first paint through hydration.
+        Minimal repro for reporting upstream. Hard refresh a demo and watch the
+        Progress animation through hydration.
       </p>
 
-      <HomeSection
-        id="demos-heading"
-        title="Demos"
-        hint="Click a demo to open it."
-      >
+      <HomeSection id="demos-heading" title="Demos">
         <DemoList />
       </HomeSection>
 

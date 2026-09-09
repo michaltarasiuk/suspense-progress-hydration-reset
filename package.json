@@ -1,5 +1,5 @@
 {
-  "name": "suspense-spinner-hydration-reset",
+  "name": "suspense-fallback-hydration-reset",
   "version": "0.1.0",
   "private": true,
   "type": "module",

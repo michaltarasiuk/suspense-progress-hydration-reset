@@ -1,6 +1,6 @@
-# suspense-fallback-spinner-reset-on-hydration
+# suspense-fallback-progress-reset-on-hydration
 
-Minimal repro: Suspense fallback spinner CSS animation restarts when `use(browser())` + client-created promise suspend during SSR to hydration.
+Minimal repro: Suspense fallback Progress animation restarts when `use(browser())` + client-created promise suspend during SSR to hydration.
 
 ## Bug
 
@@ -9,9 +9,9 @@ When a client component inside `<Suspense>`:
 1. calls `use(browser())` (suspends on server, fallback in HTML), then
 2. calls `use(promise)` where the promise is created inside the client component,
 
-the spinner restarts its CSS animation when React hydrates, even though loading is still in progress.
+the Progress animation restarts when React hydrates, even though loading is still in progress.
 
-- **Expected:** One continuous spinner animation from first paint through load.
+- **Expected:** One continuous Progress animation from first paint through load.
 - **Actual:** Animation jumps back to frame 0 at hydration (fallback DOM remount / client-only suspend restart).
 
 Two sequential `use()` calls alone do not cause the reset. The combination of SSR to hydration plus a client-born promise does.
@@ -37,8 +37,8 @@ Open [http://localhost:3000](http://localhost:3000) for navigation, then hard re
 ## How to verify
 
 1. Hard refresh `/repro`.
-2. Watch the spinner from first paint through hydration (~1-2s in).
-3. **Bug:** animation visibly restarts when JS hydrates, then keeps spinning until the 3s timeout.
+2. Watch the Progress bar from first paint through hydration (~1-2s in).
+3. **Bug:** animation visibly restarts when JS hydrates, then keeps animating until the 3s timeout.
 4. Compare `/control` and `/persistent`.
 5. Optional: React DevTools - confirm fallback unmount/remount or new DOM node at hydration.
 
