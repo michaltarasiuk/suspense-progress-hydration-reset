@@ -50,5 +50,4 @@ Open [http://localhost:3000](http://localhost:3000) for navigation, then hard re
 
 ## Related
 
-- [react#14073](https://github.com/facebook/react/issues/14073)
 - [react `browser()` docs](https://react.dev/reference/react-dom/browser)
