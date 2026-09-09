@@ -4,7 +4,7 @@ import s from "@/app/demo-page.module.css";
 import { Loading } from "@/components/loading";
 import { SiteHeader } from "@/components/site-header";
 
-import { PersistentPromise } from "./PersistentPromise";
+import { PersistentPromise } from "./PersistentFallback";
 
 export const dynamic = "force-dynamic";
 
