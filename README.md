@@ -1,4 +1,4 @@
-# suspense-progress-hydration-reset
+# suspense-fallback-hydration-reset
 
 Minimal reproduction: Suspense fallback Progress animation restarts when `use(browser())` + client-created promise suspend during SSR to hydration.
 
@@ -27,32 +27,32 @@ Open the dev URL printed in the terminal (often [http://localhost:3000](http://l
 
 ## Routes
 
-| Route         | Pattern                                      | Expected                            |
-| ------------- | -------------------------------------------- | ----------------------------------- |
-| `/`           | Home navigation                              | Links to all demos                  |
-| `/repro`      | `use(browser())` + client Map promise        | Animation **restarts** at hydration |
-| `/control`    | Server promise as prop, no `use(browser())`  | Smoother / no client-only restart   |
-| `/persistent` | Progress outside Suspense, `fallback={null}` | Animation should **not** reset      |
+| Route                  | Pattern                                      | Expected                            |
+| ---------------------- | -------------------------------------------- | ----------------------------------- |
+| `/`                    | Home navigation                              | Links to all demos                  |
+| `/client-promise`      | `use(browser())` + client Map promise        | Animation **restarts** at hydration |
+| `/server-promise`      | Server promise as prop, no `use(browser())`  | Smoother / no client-only restart   |
+| `/persistent-fallback` | Progress outside Suspense, `fallback={null}` | Animation should **not** reset      |
 
 ## How to verify
 
-The reset only shows on a **full page load** of `/repro`, not when clicking through from `/`.
+The reset only shows on a **full page load** of `/client-promise`, not when clicking through from `/`.
 
-1. Open `/repro` directly in the address bar.
+1. Open `/client-promise` directly in the address bar.
 2. Open DevTools:
    - **Network:** enable "Disable cache"
    - **Performance:** set CPU to **4x slowdown** (makes the hydration jump easier to see)
 3. Hard refresh (Cmd+Shift+R on Mac, Ctrl+Shift+R on Windows/Linux).
 4. Watch the indeterminate Progress bar from first paint. Around 1-2s in (when JS hydrates), the bar should **jump back** to the start of its slide animation.
-5. Hard refresh `/control` and `/persistent` the same way for comparison. B should stay smooth; C should not reset either.
+5. Hard refresh `/server-promise` and `/persistent-fallback` the same way for comparison. Server promise should stay smooth; persistent fallback should not reset either.
 6. Optional checks:
-   - **View page source** on `/repro`: "Loading" should appear in the HTML before JS runs.
+   - **View page source** on `/client-promise`: "Loading" should appear in the HTML before JS runs.
    - **Elements panel:** the progress indicator node may unmount and remount at hydration.
    - **React DevTools:** confirm fallback unmount/remount at hydration.
 
 ### Common false negatives
 
-- **Client navigation** from `/` to Variant A: no SSR animation to compare, so no visible reset.
+- **Client navigation** from `/` to `/client-promise`: no SSR animation to compare, so no visible reset.
 - **No CPU throttling:** on a fast machine hydration happens quickly and the jump is easy to miss.
 - **`prefers-reduced-motion`:** OS setting may disable the CSS animation entirely.
 

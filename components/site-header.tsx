@@ -1,5 +1,6 @@
 import { Separator } from "@base-ui/react/separator";
 import Link from "next/link";
+
 import s from "./site-header.module.css";
 
 interface SiteHeaderProps {

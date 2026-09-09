@@ -1,11 +1,13 @@
 "use client";
 
 import { Meter } from "@base-ui/react/meter";
+
 import { Panel } from "@/components/panel";
-import s from "./loaded-meter.module.css";
+
+import s from "./loaded.module.css";
 import layout from "./meter-layout.module.css";
 
-export function LoadedMeter() {
+export function Loaded() {
   return (
     <Panel>
       <Meter.Root className={layout.root} value={100}>

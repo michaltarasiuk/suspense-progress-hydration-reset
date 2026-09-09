@@ -1,11 +1,13 @@
 "use client";
 
 import { Progress } from "@base-ui/react/progress";
-import { Panel } from "@/components/panel";
-import layout from "./meter-layout.module.css";
-import s from "./loading-fallback.module.css";
 
-export function LoadingFallback() {
+import { Panel } from "@/components/panel";
+
+import s from "./loading.module.css";
+import layout from "./meter-layout.module.css";
+
+export function Loading() {
   return (
     <Panel>
       <Progress.Root className={layout.root} value={null}>

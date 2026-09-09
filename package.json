@@ -1,7 +1,4 @@
 {
-  "name": "suspense-progress-hydration-reset",
-  "version": "0.1.0",
-  "private": true,
   "type": "module",
   "scripts": {
     "dev": "next dev --turbopack",
@@ -28,6 +25,7 @@
     "husky": "^9.1.7",
     "lint-staged": "^17.5.0",
     "prettier": "^3",
+    "prettier-plugin-organize-imports": "^4.3.0",
     "typescript": "^5"
   },
   "packageManager": "pnpm@10.34.1"
