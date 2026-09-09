@@ -1,8 +1,8 @@
-# suspense-fallback-progress-reset-on-hydration
+# suspense-progress-hydration-reset
 
-Minimal repro: Suspense fallback Progress animation restarts when `use(browser())` + client-created promise suspend during SSR to hydration.
+Minimal reproduction: Suspense fallback Progress animation restarts when `use(browser())` + client-created promise suspend during SSR to hydration.
 
-## Bug
+## Issue
 
 When a client component inside `<Suspense>`:
 

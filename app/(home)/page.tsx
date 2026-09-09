@@ -7,11 +7,11 @@ export default function HomePage() {
   return (
     <main className={s.main}>
       <h1 className={s.title}>
-        Suspense fallback Progress animation reset on hydration
+        Suspense Progress animation reset on hydration
       </h1>
       <p className={s.lead}>
-        Minimal repro for reporting upstream. Hard refresh a demo and watch the
-        Progress animation through hydration.
+        Minimal reproduction for reporting upstream. Hard refresh a demo and
+        watch the Progress animation through hydration.
       </p>
 
       <HomeSection id="demos-heading" title="Demos">
