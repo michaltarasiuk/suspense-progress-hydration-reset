@@ -18,7 +18,7 @@ export default function Page() {
     <div className={s.root}>
       <SiteHeader
         title={SERVER_PROMISE_CONTENT.title}
-        subtitle="Server promise prop, no use(browser())"
+        subtitle={SERVER_PROMISE_CONTENT.subtitle}
       />
       <div className={s.content}>
         <Suspense fallback={<Loading />}>

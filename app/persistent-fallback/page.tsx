@@ -18,7 +18,7 @@ export default function Page() {
     <div className={s.root}>
       <SiteHeader
         title={PERSISTENT_FALLBACK_CONTENT.title}
-        subtitle="Fallback outside Suspense, fallback={null}"
+        subtitle={PERSISTENT_FALLBACK_CONTENT.subtitle}
       />
       <div className={s.contentColumn}>
         <Loading />

@@ -59,7 +59,7 @@ The reset only shows on a **full page load** of `/client-promise`, not when clic
 ## Stack
 
 - Next.js 16.3.4
-- React 19.2.8
+- React 19.3.0
 - [@base-ui/react](https://base-ui.com/llms.txt) Progress (indeterminate), styled with CSS Modules, no Tailwind
 
 ## Related
